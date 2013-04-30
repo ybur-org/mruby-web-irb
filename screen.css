@@ -115,9 +115,10 @@ input {
 #shell #output .session {
   color: #e6db74;
 }
-/* line 51, screen.sass */
-#shell #output .response span {
+/* line 50, screen.sass */
+#shell #output .value-prompt {
   color: #ae81ff;
+  padding-right: 5px;
 }
 /* line 53, screen.sass */
 #shell #output .command {
