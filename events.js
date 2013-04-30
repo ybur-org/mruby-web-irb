@@ -38,7 +38,7 @@ var history = [], history_index = 0;
       lines = [];
       printed = false;
 
-      if (source != history[history_index-1])
+      if (source != history[history.length-1])
         history.push(source);
 
       history_index = history.length;
@@ -61,6 +61,8 @@ var history = [], history_index = 0;
       $('#container').animate({
           scrollTop: $("#output").height()
        }, 200 + lines.length*50);
+
+      history_index = history.length;
     };
 
     $('#shell input').keydown(function(e) {
