@@ -78,11 +78,28 @@ body {
 }
 
 /* line 22, screen.sass */
-a {
+a, p a {
   color: #ae81ff;
 }
 
 /* line 25, screen.sass */
+p {
+  margin: 20px 0;
+}
+
+/* line 28, screen.sass */
+h1 {
+  font-size: 36px;
+  line-height: 36px;
+  color: #66d9ef;
+}
+
+/* line 33, screen.sass */
+h2 {
+  font-weight: bold;
+}
+
+/* line 36, screen.sass */
 input {
   font-size: inherit;
   line-height: inherit;
@@ -90,70 +107,129 @@ input {
   font-family: monospace !important;
 }
 
-/* line 31, screen.sass */
+/* line 42, screen.sass */
 #container {
   overflow-y: scroll;
   padding: 5px;
 }
 
-/* line 35, screen.sass */
+/* line 46, screen.sass */
 #shell {
   font-family: monospace;
   float: left;
   width: 100%;
 }
-/* line 40, screen.sass */
+/* line 51, screen.sass */
 #shell .prompt {
   color: #66d9ef;
 }
-/* line 43, screen.sass */
+/* line 54, screen.sass */
 #shell .prompt, #shell #output .response span {
   margin-right: 5px;
   display: inline-block;
 }
-/* line 48, screen.sass */
+/* line 58, screen.sass */
+#shell p {
+  margin: 0;
+}
+/* line 62, screen.sass */
 #shell #output .session {
   color: #e6db74;
 }
-/* line 50, screen.sass */
+/* line 64, screen.sass */
 #shell #output .value-prompt {
   color: #ae81ff;
   padding-right: 5px;
 }
-/* line 53, screen.sass */
+/* line 67, screen.sass */
 #shell #output .command {
   color: #f8f8f2;
 }
-/* line 57, screen.sass */
+/* line 71, screen.sass */
 #shell #command .prompt, #shell #command input {
   line-height: 20px;
   height: 21px;
 }
-/* line 60, screen.sass */
+/* line 74, screen.sass */
 #shell #command .prompt {
   float: left;
 }
-/* line 62, screen.sass */
+/* line 76, screen.sass */
 #shell #command input {
   border: none;
   padding: 0;
   width: 100%;
 }
-/* line 67, screen.sass */
+/* line 81, screen.sass */
 #shell #command input:focus {
   outline: none;
 }
 
-/* line 70, screen.sass */
+/* line 84, screen.sass */
 #welcome {
   display: none;
 }
 
-/* line 74, screen.sass */
+/* line 88, screen.sass */
 #fork-me img {
   position: absolute;
   top: 0;
   right: 0;
   border: 0;
   z-index: 10;
+}
+
+/* line 95, screen.sass */
+#basic-modal-content {
+  display: none;
+}
+
+/* line 98, screen.sass */
+#simplemodal-overlay {
+  background-color: black;
+}
+
+/* line 101, screen.sass */
+#simplemodal-container {
+  font-family: sans-serif;
+  height: 360px;
+  width: 525px;
+  color: #bbbbbb;
+  background-color: #333333;
+  border: 4px solid #444444;
+  padding: 12px;
+}
+
+/* line 110, screen.sass */
+#simplemodal-container .simplemodal-data {
+  padding: 8px;
+}
+
+/* line 113, screen.sass */
+#simplemodal-container code {
+  background: #141414;
+  border-left: 3px solid #65b43d;
+  color: #bbbbbb;
+  display: block;
+  font-size: 12px;
+  margin-bottom: 12px;
+  padding: 4px 6px 6px;
+}
+
+/* line 122, screen.sass */
+#simplemodal-container a.modalCloseImg {
+  background: url(images/x.png) no-repeat;
+  width: 25px;
+  height: 29px;
+  display: inline;
+  z-index: 3200;
+  position: absolute;
+  top: -15px;
+  right: -16px;
+  cursor: pointer;
+}
+
+/* line 133, screen.sass */
+#simplemodal-container h3 {
+  color: #84b8d9;
 }

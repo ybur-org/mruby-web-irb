@@ -32,6 +32,11 @@ var history = [], history_index = 0;
 
     $(window).trigger('resize');
 
+    if (!localStorage.saw_welcome) {
+      localStorage.saw_welcome = true;
+      $('#welcome').modal();
+    }
+
     webruby = new WEBRUBY({print_level: 2});
     webruby.run_source($('script[type="text/ruby"]').text());
 
