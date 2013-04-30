@@ -33,7 +33,7 @@ var history = [], history_index = 0;
     $(window).trigger('resize');
 
     webruby = new WEBRUBY({print_level: 2});
-    webruby.run_source("def j(selector); MrubyJs.window.jQuery(selector); end");
+    webruby.run_source($('script[type="text/ruby"]').text());
 
     var command = function(source) {
       lines = [];
