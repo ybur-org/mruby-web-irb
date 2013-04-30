@@ -86,7 +86,7 @@ a {
 input {
   font-size: inherit;
   line-height: inherit;
-  height: 18px;
+  height: 21px;
   font-family: monospace !important;
 }
 
@@ -125,29 +125,30 @@ input {
 }
 /* line 57, screen.sass */
 #shell #command .prompt, #shell #command input {
-  height: 18px;
+  line-height: 20px;
+  height: 21px;
 }
-/* line 59, screen.sass */
+/* line 60, screen.sass */
 #shell #command .prompt {
   float: left;
 }
-/* line 61, screen.sass */
+/* line 62, screen.sass */
 #shell #command input {
   border: none;
   padding: 0;
   width: 100%;
 }
-/* line 66, screen.sass */
+/* line 67, screen.sass */
 #shell #command input:focus {
   outline: none;
 }
 
-/* line 69, screen.sass */
+/* line 70, screen.sass */
 #welcome {
   display: none;
 }
 
-/* line 73, screen.sass */
+/* line 74, screen.sass */
 #fork-me img {
   position: absolute;
   top: 0;
