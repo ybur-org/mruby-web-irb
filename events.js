@@ -58,7 +58,7 @@ var history = [], history_index = 0;
 
       element.append('<div class="session"><div class="command"><span class="prompt">&gt;&gt;</span>' + source + '</div><div class="response">' + lines.slice(0, -1).join('<br>') + (lines.length > 1 ? '<br>' : '') + (value ? '<span>=&gt;</span>' + value + '</div>' : '') + '</div>');
 
-      $('#shell').animate({
+      $('#container').animate({
           scrollTop: $("#shell #output").height()
        }, 200 + lines.length*50);
     };
