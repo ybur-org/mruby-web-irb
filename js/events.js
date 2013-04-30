@@ -34,7 +34,12 @@ var history = [], history_index = 0;
 
     if (!localStorage.saw_welcome) {
       localStorage.saw_welcome = true;
-      $('#welcome').modal();
+      $('#welcome').modal({onClose: function(dialog) {
+        dialog.data.fadeOut('fast', function () {
+          $.modal.close();
+          $('#shell input').focus();
+        });
+      }});
     }
 
     webruby = new WEBRUBY({print_level: 2});
