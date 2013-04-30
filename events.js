@@ -49,10 +49,14 @@ var history = [], history_index = 0;
         window.Module['print']('nil');
       }
 
+      add_output(source, lines);
+    };
+
+    var add_output = function(source, lines) {
       var element = $("#output");
-      if (!element) return; // perhaps during startup
-      var value = lines.slice(-1)[0];
-      element.append('<div class="session"><div class="command"><span class="prompt">&gt;&gt;</span>' + source + '</div><div class="response">' + lines.slice(0, -1).join('<br>') + (lines.length > 1 ? '<br>' : '') + '<span>=&gt;</span>' + value + '</div></div>');
+      var value   = lines.slice(-1)[0];
+
+      element.append('<div class="session"><div class="command"><span class="prompt">&gt;&gt;</span>' + source + '</div><div class="response">' + lines.slice(0, -1).join('<br>') + (lines.length > 1 ? '<br>' : '') + (value ? '<span>=&gt;</span>' + value + '</div>' : '') + '</div>');
 
       $('#shell').animate({
           scrollTop: $("#shell #output").height()
@@ -89,10 +93,12 @@ var history = [], history_index = 0;
 
         case ENTER_KEY:
           var val = $(this).val().trim();
-          if (val) {
+          if (val)
             command(val);
-            $(this).val('');
-          }
+          else
+            add_output('', []);
+
+          $(this).val('');
           $(this).focus();
           break;
 
