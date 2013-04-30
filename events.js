@@ -22,10 +22,7 @@ var history = [], history_index = 0;
     $(window).resize(function() {
       var $window = $(window);
 
-      $('#shell, #editor-container')
-        .height($window.height() + 'px')
-        .width(($window.width()/2)-1 + 'px');
-
+      $('#shell').height($window.height() + 'px');
       $('#command input').width(($window.width()/2)-60);
     });
 
@@ -61,14 +58,6 @@ var history = [], history_index = 0;
           scrollTop: $("#shell #output").height()
        }, 200 + lines.length*50);
     };
-
-    $('#editor-container').keydown(function(e) {
-      if (e.which == ENTER_KEY && e.shiftKey) {
-        $('#submit-button').trigger('click');
-        $(this).focus();
-        e.preventDefault();
-      }
-    });
 
     $('#shell input').keydown(function(e) {
       var cmd, found = true;
@@ -111,16 +100,6 @@ var history = [], history_index = 0;
       }
 
       if (found) e.preventDefault();
-    });
-
-    $("#submit-button").click(function() {
-      command(editor.getValue());
-
-      if ($('#clear-check').is(':checked')) {
-        // clears current mrb states
-        webruby.close();
-        webruby = new WEBRUBY({print_level: 2});
-      }
     });
 
     window.onbeforeunload = function () {
