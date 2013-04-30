@@ -2,7 +2,7 @@
 
 $background-color: #272822
 $font-color: #F8F8F2
-$font-size: 13px
+$font-size: 18px
 $prompt-color: #66D9EF
 $highlight-color: #AE81FF
 $alternate-color: #E6DB74
@@ -17,7 +17,7 @@ body, input
 body
   font-family: monospace
   font-size: $font-size
-  line-height: $font-size+3px
+  line-height: $font-size+2px
 
 a
   color: $highlight-color
@@ -25,6 +25,7 @@ a
 input
   font-size: inherit
   line-height: inherit
+  height: $font-size
   font-family: monospace !important
 
 #container
@@ -54,7 +55,7 @@ input
 
   #command
     .prompt, input
-      height: 16px
+      height: $font-size
     .prompt
       float: left
     input
