@@ -1,4 +1,5 @@
 @import "compass/reset"
+@import "bourbon/bourbon"
 
 $background-color: #272822
 $font-color: #F8F8F2
@@ -56,7 +57,7 @@ input
     display: inline-block
 
   p
-    margin: 0 
+    margin: 0
 
   #output
     .session
@@ -83,6 +84,18 @@ input
 
 #welcome
   display: none
+  padding: 20px
+
+  #action
+    text-align: right
+    position: absolute
+    width: 480px
+    margin-top: 220px
+
+    a
+      @include button($highlight-color)
+      font-size: 18px
+      line-height: 26px
 
 #fork-me
   img
@@ -100,15 +113,12 @@ input
 
 #simplemodal-container
   font-family: sans-serif
-  height: 360px
+  height: 340px
   width: 525px
   color: #bbb
   background-color: #333
   border: 4px solid #444
   padding: 12px
-
-#simplemodal-container .simplemodal-data
-  padding: 8px
 
 #simplemodal-container code
   background: #141414

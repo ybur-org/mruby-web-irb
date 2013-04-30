@@ -63,43 +63,43 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 12, ../sass/screen.sass */
+/* line 13, ../sass/screen.sass */
 body, input {
   background: #272822;
   color: #f8f8f2;
   overflow: hidden;
 }
 
-/* line 17, ../sass/screen.sass */
+/* line 18, ../sass/screen.sass */
 body {
   font-family: monospace;
   font-size: 18px;
   line-height: 20px;
 }
 
-/* line 22, ../sass/screen.sass */
+/* line 23, ../sass/screen.sass */
 a, p a {
   color: #ae81ff;
 }
 
-/* line 25, ../sass/screen.sass */
+/* line 26, ../sass/screen.sass */
 p {
   margin: 20px 0;
 }
 
-/* line 28, ../sass/screen.sass */
+/* line 29, ../sass/screen.sass */
 h1 {
   font-size: 36px;
   line-height: 36px;
   color: #66d9ef;
 }
 
-/* line 33, ../sass/screen.sass */
+/* line 34, ../sass/screen.sass */
 h2 {
   font-weight: bold;
 }
 
-/* line 36, ../sass/screen.sass */
+/* line 37, ../sass/screen.sass */
 input {
   font-size: inherit;
   line-height: inherit;
@@ -107,70 +107,123 @@ input {
   font-family: monospace !important;
 }
 
-/* line 42, ../sass/screen.sass */
+/* line 43, ../sass/screen.sass */
 #container {
   overflow-y: scroll;
   padding: 5px;
 }
 
-/* line 46, ../sass/screen.sass */
+/* line 47, ../sass/screen.sass */
 #shell {
   font-family: monospace;
   float: left;
   width: 100%;
 }
-/* line 51, ../sass/screen.sass */
+/* line 52, ../sass/screen.sass */
 #shell .prompt {
   color: #66d9ef;
 }
-/* line 54, ../sass/screen.sass */
+/* line 55, ../sass/screen.sass */
 #shell .prompt, #shell #output .response span {
   margin-right: 5px;
   display: inline-block;
 }
-/* line 58, ../sass/screen.sass */
+/* line 59, ../sass/screen.sass */
 #shell p {
   margin: 0;
 }
-/* line 62, ../sass/screen.sass */
+/* line 63, ../sass/screen.sass */
 #shell #output .session {
   color: #e6db74;
 }
-/* line 64, ../sass/screen.sass */
+/* line 65, ../sass/screen.sass */
 #shell #output .value-prompt {
   color: #ae81ff;
   padding-right: 5px;
 }
-/* line 67, ../sass/screen.sass */
+/* line 68, ../sass/screen.sass */
 #shell #output .command {
   color: #f8f8f2;
 }
-/* line 71, ../sass/screen.sass */
+/* line 72, ../sass/screen.sass */
 #shell #command .prompt, #shell #command input {
   line-height: 20px;
   height: 21px;
 }
-/* line 74, ../sass/screen.sass */
+/* line 75, ../sass/screen.sass */
 #shell #command .prompt {
   float: left;
 }
-/* line 76, ../sass/screen.sass */
+/* line 77, ../sass/screen.sass */
 #shell #command input {
   border: none;
   padding: 0;
   width: 90%;
 }
-/* line 81, ../sass/screen.sass */
+/* line 82, ../sass/screen.sass */
 #shell #command input:focus {
   outline: none;
 }
 
-/* line 84, ../sass/screen.sass */
+/* line 85, ../sass/screen.sass */
 #welcome {
   display: none;
+  padding: 20px;
+}
+/* line 89, ../sass/screen.sass */
+#welcome #action {
+  text-align: right;
+  position: absolute;
+  width: 480px;
+  margin-top: 220px;
+}
+/* line 95, ../sass/screen.sass */
+#welcome #action a {
+  border: 1px solid #803aff;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 0 #e0cffd;
+  color: #333333;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: bold;
+  background-color: #ae81ff;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ae81ff), color-stop(100%, #8a49ff));
+  background-image: -webkit-linear-gradient(top, #ae81ff, #8a49ff);
+  background-image: -moz-linear-gradient(top, #ae81ff, #8a49ff);
+  background-image: -ms-linear-gradient(top, #ae81ff, #8a49ff);
+  background-image: -o-linear-gradient(top, #ae81ff, #8a49ff);
+  background-image: linear-gradient(top, #ae81ff, #8a49ff);
+  padding: 7px 18px;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #bb95ff;
+  -webkit-background-clip: padding-box;
+  font-size: 18px;
+  line-height: 26px;
+}
+/* line 52, ../sass/bourbon/addons/_button.sass */
+#welcome #action a:hover:not(:disabled) {
+  box-shadow: inset 0 1px 0 0 #bf9efb;
+  cursor: pointer;
+  background-color: #9e6bfc;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9e6bfc), color-stop(100%, #803aff));
+  background-image: -webkit-linear-gradient(top, #9e6bfc, #803aff);
+  background-image: -moz-linear-gradient(top, #9e6bfc, #803aff);
+  background-image: -ms-linear-gradient(top, #9e6bfc, #803aff);
+  background-image: -o-linear-gradient(top, #9e6bfc, #803aff);
+  background-image: linear-gradient(top, #9e6bfc, #803aff);
+}
+/* line 63, ../sass/bourbon/addons/_button.sass */
+#welcome #action a:active:not(:disabled) {
+  border: 1px solid #803aff;
+  box-shadow: inset 0 0 8px 4px #762aff, inset 0 0 8px 4px #762aff, 0 1px 1px 0 #eeeeee;
+}
+/* line 20, ../sass/bourbon/addons/_button.sass */
+#welcome #action a:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-/* line 88, ../sass/screen.sass */
+/* line 101, ../sass/screen.sass */
 #fork-me img {
   position: absolute;
   top: 0;
@@ -179,20 +232,20 @@ input {
   z-index: 10;
 }
 
-/* line 95, ../sass/screen.sass */
+/* line 108, ../sass/screen.sass */
 #basic-modal-content {
   display: none;
 }
 
-/* line 98, ../sass/screen.sass */
+/* line 111, ../sass/screen.sass */
 #simplemodal-overlay {
   background-color: black;
 }
 
-/* line 101, ../sass/screen.sass */
+/* line 114, ../sass/screen.sass */
 #simplemodal-container {
   font-family: sans-serif;
-  height: 360px;
+  height: 340px;
   width: 525px;
   color: #bbbbbb;
   background-color: #333333;
@@ -200,12 +253,7 @@ input {
   padding: 12px;
 }
 
-/* line 110, ../sass/screen.sass */
-#simplemodal-container .simplemodal-data {
-  padding: 8px;
-}
-
-/* line 113, ../sass/screen.sass */
+/* line 123, ../sass/screen.sass */
 #simplemodal-container code {
   background: #141414;
   border-left: 3px solid #65b43d;
@@ -216,7 +264,7 @@ input {
   padding: 4px 6px 6px;
 }
 
-/* line 122, ../sass/screen.sass */
+/* line 132, ../sass/screen.sass */
 #simplemodal-container a.modalCloseImg {
   background: url(../images/x.png) no-repeat;
   width: 25px;
@@ -229,7 +277,7 @@ input {
   cursor: pointer;
 }
 
-/* line 133, ../sass/screen.sass */
+/* line 143, ../sass/screen.sass */
 #simplemodal-container h3 {
   color: #84b8d9;
 }

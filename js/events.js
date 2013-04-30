@@ -42,6 +42,11 @@ var history = [], history_index = 0;
       }});
     }
 
+    $('#try-it-now').click(function(e) {
+      e.preventDefault();
+      $.modal.close();
+    });
+
     webruby = new WEBRUBY({print_level: 2});
     webruby.run_source($('script[type="text/ruby"]').text());
 
