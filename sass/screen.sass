@@ -41,6 +41,7 @@ h1
 
 h2
   font-weight: bold
+  margin-bottom: 8px
 
 input
   font-size: inherit
@@ -94,24 +95,40 @@ input
   display: none
   padding: 20px
 
-  ul
-    margin: 3px 0
-    list-style-type: disc
-    li
-      margin-left: 20px
-
-  #resources, #action
+  #resources, #keyboard
+    font-size: 0.9em
     float: left
-    width: 235px
+
+  #resources
+    width: 225px
+    ul
+      margin: 3px 0
+      list-style-type: disc
+      li
+        margin: 4px 0 4px 20px
+
+  #keyboard
+    padding-right: 10px
+    width: 272px
+    li
+      margin: 4px 0
+
+    span
+      +inline-block
+      background: #444
+      padding: 2px
+      border-radius: 3px
+      border: solid 2px #555
 
   #action
-    margin-top: 41px
-    text-align: right
+    clear: left
+    padding-top: 16px
+    text-align: center
 
     a
       @include button($highlight-color)
-      font-size: 18px
-      line-height: 26px
+      font-size: 24px
+      line-height: 34px
 
 #fork-me
   img
@@ -129,9 +146,9 @@ input
 
 #simplemodal-container
   font-family: sans-serif
-  height: 360px
-  width: 525px
-  color: #bbb
+  height: 478px
+  width: 565px
+  color: darken($font-color, 10%)
   background-color: $background-color
   border: 8px solid #444
   padding: 12px
