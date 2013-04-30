@@ -78,8 +78,10 @@ var history = [], history_index = 0;
           history_index++;
           cmd = history[history_index];
 
-          if (history_index >= history.length)
+          if (history_index >= history.length) {
             history_index = history.length-1;
+            $('#shell input').val('');
+          }
           else
             $('#shell input').val(cmd);
 
