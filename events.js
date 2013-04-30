@@ -33,6 +33,7 @@ var history = [], history_index = 0;
     $(window).trigger('resize');
 
     webruby = new WEBRUBY({print_level: 2});
+    webruby.run_source("def j(selector); MrubyJs.window.jQuery(selector); end");
 
     var command = function(source) {
       lines = [];
@@ -56,7 +57,19 @@ var history = [], history_index = 0;
       var element = $("#output");
       var value   = lines.slice(-1)[0];
 
-      element.append('<div class="session"><div class="command"><span class="prompt">&gt;&gt;</span>' + source + '</div><div class="response">' + lines.slice(0, -1).join('<br>') + (lines.length > 1 ? '<br>' : '') + (value ? '<span>=&gt;</span>' + value + '</div>' : '') + '</div>');
+      var session = element.append('<div class="session"><div class="command"><span class="prompt">&gt;&gt;</span><span class="source"/></div><div class="response"></div></div>').find('.session:last');
+      var response = session.find('.response');
+
+      $(lines.slice(0, -1)).each(function(_, line) {
+        response.append('<p>');
+        response.find('p:last').text(line);
+      });
+
+      session.find('.command .source').text(source);
+      if (value) {
+        response.append('<span class="value-prompt">=&gt;</span><span class="value" />');
+        response.find('.value').text(value);
+      }
 
       $('#container').animate({
           scrollTop: $("#output").height()
