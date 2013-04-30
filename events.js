@@ -22,7 +22,7 @@ var history = [], history_index = 0;
     $(window).resize(function() {
       var $window = $(window);
 
-      $('#shell').height($window.height() + 'px');
+      $('#shell').height($window.height()-10);
       $('#command input').width($window.width()-60);
     });
 
@@ -59,7 +59,7 @@ var history = [], history_index = 0;
       element.append('<div class="session"><div class="command"><span class="prompt">&gt;&gt;</span>' + source + '</div><div class="response">' + lines.slice(0, -1).join('<br>') + (lines.length > 1 ? '<br>' : '') + (value ? '<span>=&gt;</span>' + value + '</div>' : '') + '</div>');
 
       $('#container').animate({
-          scrollTop: $("#shell #output").height()
+          scrollTop: $("#output").height()
        }, 200 + lines.length*50);
     };
 
