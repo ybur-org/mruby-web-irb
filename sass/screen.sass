@@ -86,11 +86,19 @@ input
   display: none
   padding: 20px
 
+  ul
+    margin: 3px 0
+    list-style-type: disc
+    li
+      margin-left: 20px
+
+  #resources, #action
+    float: left
+    width: 235px
+
   #action
+    margin-top: 41px
     text-align: right
-    position: absolute
-    width: 480px
-    margin-top: 220px
 
     a
       @include button($highlight-color)
@@ -113,7 +121,7 @@ input
 
 #simplemodal-container
   font-family: sans-serif
-  height: 340px
+  height: 342px
   width: 525px
   color: #bbb
   background-color: #333

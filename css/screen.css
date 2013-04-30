@@ -171,13 +171,25 @@ input {
   padding: 20px;
 }
 /* line 89, ../sass/screen.sass */
-#welcome #action {
-  text-align: right;
-  position: absolute;
-  width: 480px;
-  margin-top: 220px;
+#welcome ul {
+  margin: 3px 0;
+  list-style-type: disc;
+}
+/* line 92, ../sass/screen.sass */
+#welcome ul li {
+  margin-left: 20px;
 }
 /* line 95, ../sass/screen.sass */
+#welcome #resources, #welcome #action {
+  float: left;
+  width: 235px;
+}
+/* line 99, ../sass/screen.sass */
+#welcome #action {
+  margin-top: 41px;
+  text-align: right;
+}
+/* line 103, ../sass/screen.sass */
 #welcome #action a {
   border: 1px solid #803aff;
   border-radius: 3px;
@@ -223,7 +235,7 @@ input {
   cursor: not-allowed;
 }
 
-/* line 101, ../sass/screen.sass */
+/* line 109, ../sass/screen.sass */
 #fork-me img {
   position: absolute;
   top: 0;
@@ -232,20 +244,20 @@ input {
   z-index: 10;
 }
 
-/* line 108, ../sass/screen.sass */
+/* line 116, ../sass/screen.sass */
 #basic-modal-content {
   display: none;
 }
 
-/* line 111, ../sass/screen.sass */
+/* line 119, ../sass/screen.sass */
 #simplemodal-overlay {
   background-color: black;
 }
 
-/* line 114, ../sass/screen.sass */
+/* line 122, ../sass/screen.sass */
 #simplemodal-container {
   font-family: sans-serif;
-  height: 340px;
+  height: 342px;
   width: 525px;
   color: #bbbbbb;
   background-color: #333333;
@@ -253,7 +265,7 @@ input {
   padding: 12px;
 }
 
-/* line 123, ../sass/screen.sass */
+/* line 131, ../sass/screen.sass */
 #simplemodal-container code {
   background: #141414;
   border-left: 3px solid #65b43d;
@@ -264,7 +276,7 @@ input {
   padding: 4px 6px 6px;
 }
 
-/* line 132, ../sass/screen.sass */
+/* line 140, ../sass/screen.sass */
 #simplemodal-container a.modalCloseImg {
   background: url(../images/x.png) no-repeat;
   width: 25px;
@@ -277,7 +289,7 @@ input {
   cursor: pointer;
 }
 
-/* line 143, ../sass/screen.sass */
+/* line 151, ../sass/screen.sass */
 #simplemodal-container h3 {
   color: #84b8d9;
 }

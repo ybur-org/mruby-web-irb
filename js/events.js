@@ -42,7 +42,7 @@ var history = [], history_index = 0;
       }});
     }
 
-    $('#try-it-now').click(function(e) {
+    $('#try-it-now').live('click', function(e) {
       e.preventDefault();
       $.modal.close();
     });
