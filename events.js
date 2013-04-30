@@ -23,7 +23,7 @@ var history = [], history_index = 0;
       var $window = $(window);
 
       $('#shell').height($window.height() + 'px');
-      $('#command input').width(($window.width()/2)-60);
+      $('#command input').width($window.width()-60);
     });
 
     $('#shell').click(function() {
