@@ -20,8 +20,15 @@ body
   font-size: $font-size
   line-height: $font-size+2px
 
-a, p a
+a
   color: $highlight-color
+  text-decoration: none
+
+  &:hover
+    text-decoration: underline
+
+hr
+  border-color: #444
 
 p
   margin: 20px 0
@@ -30,6 +37,7 @@ h1
   font-size: $font-size*2
   line-height: $font-size*2
   color: $prompt-color
+  margin-bottom: 18px
 
 h2
   font-weight: bold
@@ -121,17 +129,16 @@ input
 
 #simplemodal-container
   font-family: sans-serif
-  height: 342px
+  height: 360px
   width: 525px
   color: #bbb
-  background-color: #333
+  background-color: $background-color
   border: 8px solid #444
   padding: 12px
 
 #simplemodal-container code
   background: #141414
   border-left: 3px solid #65B43D
-  color: #bbb
   display: block
   font-size: 12px
   margin-bottom: 12px
