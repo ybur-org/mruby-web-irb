@@ -9,6 +9,7 @@ $highlight-color: #AE81FF
 $alternate-color: #E6DB74
 $response-label-color: $highlight-color
 $response-color: $alternate-color
+$error-color: #F92672
 
 body, textarea
   background: $background-color
@@ -72,6 +73,8 @@ textarea
   #output
     .session
       color: $response-color
+    .error .value
+      color: $error-color
     .value-prompt
       color: $response-label-color
       padding-right: 5px

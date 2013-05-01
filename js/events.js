@@ -87,6 +87,9 @@ var history = [], history_index = 0;
         response.find('.value').text(value);
       }
 
+      if (value.match(/\S*Error: /))
+        response.addClass('error');
+
       scroll_to_end();
 
       history_index = history.length;
