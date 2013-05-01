@@ -87,11 +87,13 @@ var history = [], history_index = 0;
         response.find('.value').text(value);
       }
 
-      $('#container').animate({
-          scrollTop: $("#output").height()
-       }, 200 + lines.length*50);
+      scroll_to_end();
 
       history_index = history.length;
+    };
+
+    var scroll_to_end = function() {
+      $('#container').scrollTop($('#container').height());
     };
 
     var set_command = function(cmd) {
@@ -101,7 +103,7 @@ var history = [], history_index = 0;
     $('#shell textarea').keyup(function() {
       var lines = $(this).val().split("\n");
       $(this).height(lines.length * INPUT_HEIGHT);
-      $('#container').scrollTop($('#container').height());
+      scroll_to_end();
     });
 
     $('#shell textarea').keydown(function(e) {
@@ -134,8 +136,7 @@ var history = [], history_index = 0;
 
         case ENTER_KEY:
           if (e.shiftKey) {
-            $(this).val($(this).val() + "\n");
-            $(this).height($(this).height() + INPUT_HEIGHT);
+            set_command($(this).val() + "\n");
           }
           else {
             var val = $(this).val().trim();
