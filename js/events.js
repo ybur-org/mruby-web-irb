@@ -142,8 +142,10 @@ var history = [], history_index = 0;
             var val = $(this).val().trim();
             if (val)
               command(val);
-            else
+            else {
               add_output('', []);
+              scroll_to_end();
+            }
 
             $(this).height(INPUT_HEIGHT).focus().val('');
           }
