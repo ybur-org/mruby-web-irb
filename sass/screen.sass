@@ -10,7 +10,7 @@ $alternate-color: #E6DB74
 $response-label-color: $highlight-color
 $response-color: $alternate-color
 
-body, input
+body, textarea
   background: $background-color
   color: $font-color
   overflow: hidden
@@ -43,7 +43,7 @@ h2
   font-weight: bold
   margin-bottom: 8px
 
-input
+textarea
   font-size: inherit
   line-height: inherit
   height: $font-size+3px
@@ -76,17 +76,24 @@ input
       padding-right: 5px
     .command
       color: $font-color
+    .source
+      margin-left: 32px
+      min-height: 21px
+    .prompt
+      display: block
+      float: left
 
   #command
-    .prompt, input
+    .prompt, textarea
       line-height: $font-size+2
       height: $font-size+3
     .prompt
       float: left
-    input
+    textarea
       border: none
       padding: 0
       width: 90%
+      margin-left: 5px
 
       &:focus
         outline: none

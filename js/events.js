@@ -8,6 +8,7 @@ var history = [], history_index = 0;
     history_index = history.length;
   }
 
+  var INPUT_HEIGHT = 21;
   var ENTER_KEY = 13;
   var UP_KEY    = 38;
   var DOWN_KEY  = 40;
@@ -23,11 +24,11 @@ var history = [], history_index = 0;
       var $window = $(window);
 
       $('#shell').height($window.height()-10);
-      $('#command input').width($window.width()-60);
+      $('#command textarea').width($window.width()-60);
     });
 
     $('#shell').click(function() {
-      $('input').focus();
+      $('textarea').focus();
     });
 
     $(window).trigger('resize');
@@ -37,7 +38,7 @@ var history = [], history_index = 0;
       $('#welcome').modal({onClose: function(dialog) {
         dialog.data.fadeOut('fast', function () {
           $.modal.close();
-          $('#shell input').focus();
+          $('#shell textarea').focus();
         });
       }});
     }
@@ -72,7 +73,7 @@ var history = [], history_index = 0;
       var element = $("#output");
       var value   = lines.slice(-1)[0];
 
-      var session = element.append('<div class="session"><div class="command"><span class="prompt">&gt;&gt;</span><span class="source"/></div><div class="response"></div></div>').find('.session:last');
+      var session = element.append('<div class="session"><div class="command"><span class="prompt">&gt;&gt;</span><pre class="source"/></pre><div class="response"></div></div>').find('.session:last');
       var response = session.find('.response');
 
       $(lines.slice(0, -1)).each(function(_, line) {
@@ -93,7 +94,17 @@ var history = [], history_index = 0;
       history_index = history.length;
     };
 
-    $('#shell input').keydown(function(e) {
+    var set_command = function(cmd) {
+      $('#shell textarea').val(cmd);
+    };
+
+    $('#shell textarea').keyup(function() {
+      var lines = $(this).val().split("\n");
+      $(this).height(lines.length * INPUT_HEIGHT);
+      $('#container').scrollTop($('#container').height());
+    });
+
+    $('#shell textarea').keydown(function(e) {
       var cmd, found = true;
 
       switch (e.which) {
@@ -104,7 +115,7 @@ var history = [], history_index = 0;
           if (history_index < 0)
             history_index = 0;
           else
-            $('#shell input').val(cmd);
+            set_command(cmd);
 
           break;
 
@@ -114,22 +125,27 @@ var history = [], history_index = 0;
 
           if (history_index >= history.length) {
             history_index = history.length-1;
-            $('#shell input').val('');
+            set_command('');
           }
           else
-            $('#shell input').val(cmd);
+            set_command(cmd);
 
           break;
 
         case ENTER_KEY:
-          var val = $(this).val().trim();
-          if (val)
-            command(val);
-          else
-            add_output('', []);
+          if (e.shiftKey) {
+            $(this).val($(this).val() + "\n");
+            $(this).height($(this).height() + INPUT_HEIGHT);
+          }
+          else {
+            var val = $(this).val().trim();
+            if (val)
+              command(val);
+            else
+              add_output('', []);
 
-          $(this).val('');
-          $(this).focus();
+            $(this).height(INPUT_HEIGHT).focus().val('');
+          }
           break;
 
         default:
