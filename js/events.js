@@ -96,7 +96,7 @@ var history = [], history_index = 0;
     };
 
     var scroll_to_end = function() {
-      $('#container').scrollTop($('#container').height());
+      $('#container').scrollTop($('#output').height() + $('#command').height());
     };
 
     var set_command = function(cmd) {
