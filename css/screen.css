@@ -113,114 +113,115 @@ h2 {
 
 /* line 46, ../sass/screen.sass */
 textarea {
+  font-family: monospace !important;
   font-size: inherit;
   line-height: inherit;
   height: 21px;
-  font-family: monospace !important;
+  resize: none;
 }
 
-/* line 52, ../sass/screen.sass */
+/* line 53, ../sass/screen.sass */
 #container {
   overflow-y: scroll;
   padding: 5px;
 }
 
-/* line 56, ../sass/screen.sass */
+/* line 57, ../sass/screen.sass */
 #shell {
   font-family: monospace;
   float: left;
   width: 100%;
 }
-/* line 61, ../sass/screen.sass */
+/* line 62, ../sass/screen.sass */
 #shell .prompt {
   color: #66d9ef;
 }
-/* line 64, ../sass/screen.sass */
+/* line 65, ../sass/screen.sass */
 #shell .prompt, #shell #output .response span {
   margin-right: 5px;
   display: inline-block;
 }
-/* line 68, ../sass/screen.sass */
+/* line 69, ../sass/screen.sass */
 #shell p {
   margin: 0;
 }
-/* line 72, ../sass/screen.sass */
+/* line 73, ../sass/screen.sass */
 #shell #output .session {
   color: #e6db74;
 }
-/* line 74, ../sass/screen.sass */
+/* line 75, ../sass/screen.sass */
 #shell #output .value-prompt {
   color: #ae81ff;
   padding-right: 5px;
 }
-/* line 77, ../sass/screen.sass */
+/* line 78, ../sass/screen.sass */
 #shell #output .command {
   color: #f8f8f2;
 }
-/* line 79, ../sass/screen.sass */
+/* line 80, ../sass/screen.sass */
 #shell #output .source {
   margin-left: 32px;
   min-height: 21px;
 }
-/* line 82, ../sass/screen.sass */
+/* line 83, ../sass/screen.sass */
 #shell #output .prompt {
   display: block;
   float: left;
 }
-/* line 87, ../sass/screen.sass */
+/* line 88, ../sass/screen.sass */
 #shell #command .prompt, #shell #command textarea {
   line-height: 20px;
   height: 21px;
 }
-/* line 90, ../sass/screen.sass */
+/* line 91, ../sass/screen.sass */
 #shell #command .prompt {
   float: left;
 }
-/* line 92, ../sass/screen.sass */
+/* line 93, ../sass/screen.sass */
 #shell #command textarea {
   border: none;
   padding: 0;
   width: 90%;
   margin-left: 5px;
 }
-/* line 98, ../sass/screen.sass */
+/* line 99, ../sass/screen.sass */
 #shell #command textarea:focus {
   outline: none;
 }
 
-/* line 101, ../sass/screen.sass */
+/* line 102, ../sass/screen.sass */
 #welcome {
   display: none;
   padding: 20px;
 }
-/* line 105, ../sass/screen.sass */
+/* line 106, ../sass/screen.sass */
 #welcome #resources, #welcome #keyboard {
   font-size: 0.9em;
   float: left;
 }
-/* line 109, ../sass/screen.sass */
+/* line 110, ../sass/screen.sass */
 #welcome #resources {
   width: 225px;
 }
-/* line 111, ../sass/screen.sass */
+/* line 112, ../sass/screen.sass */
 #welcome #resources ul {
   margin: 3px 0;
   list-style-type: disc;
 }
-/* line 114, ../sass/screen.sass */
+/* line 115, ../sass/screen.sass */
 #welcome #resources ul li {
   margin: 4px 0 4px 20px;
 }
-/* line 117, ../sass/screen.sass */
+/* line 118, ../sass/screen.sass */
 #welcome #keyboard {
   padding-right: 10px;
   width: 272px;
 }
-/* line 120, ../sass/screen.sass */
+/* line 121, ../sass/screen.sass */
 #welcome #keyboard li {
   margin: 4px 0;
 }
-/* line 123, ../sass/screen.sass */
+/* line 124, ../sass/screen.sass */
 #welcome #keyboard span {
   display: inline-block;
   vertical-align: baseline;
@@ -232,13 +233,13 @@ textarea {
   border-radius: 3px;
   border: solid 2px #555555;
 }
-/* line 130, ../sass/screen.sass */
+/* line 131, ../sass/screen.sass */
 #welcome #action {
   clear: left;
   padding-top: 16px;
   text-align: center;
 }
-/* line 135, ../sass/screen.sass */
+/* line 136, ../sass/screen.sass */
 #welcome #action a {
   border: 1px solid #803aff;
   border-radius: 3px;
@@ -284,7 +285,7 @@ textarea {
   cursor: not-allowed;
 }
 
-/* line 141, ../sass/screen.sass */
+/* line 142, ../sass/screen.sass */
 #fork-me img {
   position: absolute;
   top: 0;
@@ -293,17 +294,17 @@ textarea {
   z-index: 10;
 }
 
-/* line 148, ../sass/screen.sass */
+/* line 149, ../sass/screen.sass */
 #basic-modal-content {
   display: none;
 }
 
-/* line 151, ../sass/screen.sass */
+/* line 152, ../sass/screen.sass */
 #simplemodal-overlay {
   background-color: black;
 }
 
-/* line 154, ../sass/screen.sass */
+/* line 155, ../sass/screen.sass */
 #simplemodal-container {
   font-family: sans-serif;
   height: 478px;
@@ -314,7 +315,7 @@ textarea {
   padding: 12px;
 }
 
-/* line 163, ../sass/screen.sass */
+/* line 164, ../sass/screen.sass */
 #simplemodal-container code {
   background: #141414;
   border-left: 3px solid #65b43d;
@@ -324,7 +325,7 @@ textarea {
   padding: 4px 6px 6px;
 }
 
-/* line 171, ../sass/screen.sass */
+/* line 172, ../sass/screen.sass */
 #simplemodal-container a.modalCloseImg {
   background: url(../images/x.png) no-repeat;
   width: 25px;
@@ -337,7 +338,7 @@ textarea {
   cursor: pointer;
 }
 
-/* line 182, ../sass/screen.sass */
+/* line 183, ../sass/screen.sass */
 #simplemodal-container h3 {
   color: #84b8d9;
 }
