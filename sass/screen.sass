@@ -44,13 +44,6 @@ h2
   font-weight: bold
   margin-bottom: 8px
 
-#editor
-  font-family: monospace !important
-  font-size: inherit
-  line-height: inherit
-  height: $font-size+3px
-  resize: none
-
 #container
   overflow-y: scroll
   padding: 5px
@@ -80,8 +73,10 @@ h2
       padding-right: 5px
     .command
       color: $font-color
+    .response
+      clear: left
     .source
-      margin-left: 32px
+      margin-left: 28px
       min-height: 21px
     .prompt
       display: block
@@ -142,16 +137,31 @@ h2
       line-height: 34px
 
 #editor
-  height: 25px
-  width: 90%
   margin-left: 28px
 
+#editor, .editor
+  position: relative !important
+  font-family: monospace !important
+  font-size: inherit !important
+  line-height: inherit
+  height: $font-size+3px
+  resize: none
+  width: 90%
+
   .ace_sb
-    overflow-y: hidden
+    overflow-y: hidden !important
   .ace_scroller
+    position: static
     overflow-x: hidden !important
   .ace_marker-layer .ace_selection
     background: inherit
+  .ace_cursor.ace_hidden
+    opacity: 0
+
+.source.editor
+  .ace_hidden-cursors
+    opacity: 0
+
 
 #fork-me
   img

@@ -73,7 +73,7 @@ var history = [], history_index = 0;
       var element = $("#output");
       var value   = lines.slice(-1)[0];
 
-      var session = element.append('<div class="session"><div class="command"><span class="prompt">&gt;&gt;</span><pre class="source"/></pre><div class="response"></div></div>').find('.session:last');
+      var session = element.append('<div class="session"><div class="command"><span class="prompt">&gt;&gt;</span><div class="source editor"/></div><div class="response"></div></div>').find('.session:last');
       var response = session.find('.response');
 
       $(lines.slice(0, -1)).each(function(_, line) {
@@ -81,11 +81,22 @@ var history = [], history_index = 0;
         response.find('p:last').text(line);
       });
 
-      session.find('.command .source').text(source);
+      var size = $('.session').size();
+      var id = 'editor' + size;
+      session.find('.command .source').attr('id', id).text(source);
+      var viewer = configure_editor(id);
+      viewer.setReadOnly(true);
+      resize_textarea(viewer, '#' + id);
+      viewer.resize();
+      editor.focus();
+
       if (value) {
         response.append('<span class="value-prompt">=&gt;</span><span class="value" />');
         response.find('.value').text(value);
       }
+
+      var source_height = $('#' + id).height();
+      session.find('.command').height(source_height);
 
       if (value && value.match(/\S*Error: /))
         response.addClass('error');
@@ -101,17 +112,19 @@ var history = [], history_index = 0;
 
     var set_command = function(cmd) {
       editor.getSession().setValue(cmd);
-      resize_textarea();
+      resize_textarea(editor, '#editor');
     };
 
-    var resize_textarea = function() {
+    var resize_textarea = function(editor, selector) {
       var lines = editor.getValue().split("\n");
 
-      $('#editor').height(lines.length * INPUT_HEIGHT);
+      $(selector).height(lines.length * INPUT_HEIGHT);
       scroll_to_end();
     };
 
-    $('#editor').keyup(resize_textarea);
+    $('#editor').keyup(function() {
+      resize_textarea(editor, '#editor');
+    });
 
     $('#editor').keydown(function(e) {
       var cmd, found = true;
@@ -144,7 +157,7 @@ var history = [], history_index = 0;
         case ENTER_KEY:
           if (e.shiftKey) {
             editor.getSession().insert(editor.selection.getCursor(), "\n");
-            resize_textarea();
+            resize_textarea(editor, '#editor');
             editor.resize();
           }
           else {
@@ -177,13 +190,20 @@ var history = [], history_index = 0;
       }
     };
 
-    var editor = ace.edit("editor");
-    editor.renderer.setShowGutter(false);
-    editor.setTheme("ace/theme/monokai");
-    editor.setHighlightActiveLine(false);
-    editor.setShowPrintMargin(false);
-    editor.getSession().setMode("ace/mode/ruby");
-    editor.getSession().setUseSoftTabs(true);
-    editor.getSession().setTabSize(2);
+    var configure_editor = function(selector) {
+      var editor = ace.edit(selector);
+      editor.renderer.setShowGutter(false);
+      editor.setTheme("ace/theme/monokai");
+      editor.setHighlightActiveLine(false);
+      editor.setShowPrintMargin(false);
+      editor.getSession().setMode("ace/mode/ruby");
+      editor.getSession().setUseSoftTabs(true);
+      editor.getSession().setTabSize(2);
+      return editor;
+    };
+
+    var editor = configure_editor('editor');
+
+    $('textarea:last').focus();
   });
 }());
