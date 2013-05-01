@@ -112,7 +112,7 @@ h2 {
 }
 
 /* line 47, ../sass/screen.sass */
-textarea {
+#editor {
   font-family: monospace !important;
   font-size: inherit;
   line-height: inherit;
@@ -289,7 +289,26 @@ textarea {
   cursor: not-allowed;
 }
 
-/* line 145, ../sass/screen.sass */
+/* line 144, ../sass/screen.sass */
+#editor {
+  height: 25px;
+  width: 90%;
+  margin-left: 28px;
+}
+/* line 149, ../sass/screen.sass */
+#editor .ace_sb {
+  overflow-y: hidden;
+}
+/* line 151, ../sass/screen.sass */
+#editor .ace_scroller {
+  overflow-x: hidden !important;
+}
+/* line 153, ../sass/screen.sass */
+#editor .ace_marker-layer .ace_selection {
+  background: inherit;
+}
+
+/* line 157, ../sass/screen.sass */
 #fork-me img {
   position: absolute;
   top: 0;
@@ -298,17 +317,17 @@ textarea {
   z-index: 10;
 }
 
-/* line 152, ../sass/screen.sass */
+/* line 164, ../sass/screen.sass */
 #basic-modal-content {
   display: none;
 }
 
-/* line 155, ../sass/screen.sass */
+/* line 167, ../sass/screen.sass */
 #simplemodal-overlay {
   background-color: black;
 }
 
-/* line 158, ../sass/screen.sass */
+/* line 170, ../sass/screen.sass */
 #simplemodal-container {
   font-family: sans-serif;
   height: 478px;
@@ -319,7 +338,7 @@ textarea {
   padding: 12px;
 }
 
-/* line 167, ../sass/screen.sass */
+/* line 179, ../sass/screen.sass */
 #simplemodal-container code {
   background: #141414;
   border-left: 3px solid #65b43d;
@@ -329,7 +348,7 @@ textarea {
   padding: 4px 6px 6px;
 }
 
-/* line 175, ../sass/screen.sass */
+/* line 187, ../sass/screen.sass */
 #simplemodal-container a.modalCloseImg {
   background: url(../images/x.png) no-repeat;
   width: 25px;
@@ -342,7 +361,7 @@ textarea {
   cursor: pointer;
 }
 
-/* line 186, ../sass/screen.sass */
+/* line 198, ../sass/screen.sass */
 #simplemodal-container h3 {
   color: #84b8d9;
 }

@@ -24,11 +24,11 @@ var history = [], history_index = 0;
       var $window = $(window);
 
       $('#shell').height($window.height()-10);
-      $('#command textarea').width($window.width()-60);
+      $('#editor').width($window.width()-60);
     });
 
     $('#shell').click(function() {
-      $('textarea').focus();
+      $('textarea:last').focus();
     });
 
     $(window).trigger('resize');
@@ -38,7 +38,7 @@ var history = [], history_index = 0;
       $('#welcome').modal({onClose: function(dialog) {
         dialog.data.fadeOut('fast', function () {
           $.modal.close();
-          $('#shell textarea').focus();
+          $('#shell textarea:last').focus();
         });
       }});
     }
@@ -100,21 +100,20 @@ var history = [], history_index = 0;
     };
 
     var set_command = function(cmd) {
-      $('#shell textarea').val(cmd);
+      editor.getSession().setValue(cmd);
       resize_textarea();
     };
 
     var resize_textarea = function() {
-      var textarea = $('#shell textarea');
-      var lines = textarea.val().split("\n");
+      var lines = editor.getValue().split("\n");
 
-      textarea.height(lines.length * INPUT_HEIGHT);
+      $('#editor').height(lines.length * INPUT_HEIGHT);
       scroll_to_end();
     };
 
-    $('#shell textarea').keyup(resize_textarea);
+    $('#editor').keyup(resize_textarea);
 
-    $('#shell textarea').keydown(function(e) {
+    $('#editor').keydown(function(e) {
       var cmd, found = true;
 
       switch (e.which) {
@@ -143,12 +142,13 @@ var history = [], history_index = 0;
           break;
 
         case ENTER_KEY:
-          var val = $(this).val().trim();
-
           if (e.shiftKey) {
-            set_command(val + "\n");
+            editor.getSession().insert(editor.selection.getCursor(), "\n");
+            resize_textarea();
+            editor.resize();
           }
           else {
+            var val = editor.getValue().trim();
             if (val)
               run_command(val);
             else {
@@ -175,6 +175,15 @@ var history = [], history_index = 0;
       if (localStorage) {
         localStorage.history = JSON.stringify(history);
       }
-    }
+    };
+
+    var editor = ace.edit("editor");
+    editor.renderer.setShowGutter(false);
+    editor.setTheme("ace/theme/monokai");
+    editor.setHighlightActiveLine(false);
+    editor.setShowPrintMargin(false);
+    editor.getSession().setMode("ace/mode/ruby");
+    editor.getSession().setUseSoftTabs(true);
+    editor.getSession().setTabSize(2);
   });
 }());
