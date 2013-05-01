@@ -51,7 +51,7 @@ var history = [], history_index = 0;
     webruby = new WEBRUBY({print_level: 2});
     webruby.run_source($('script[type="text/ruby"]').text());
 
-    var command = function(source) {
+    var run_command = function(source) {
       lines = [];
       printed = false;
 
@@ -87,7 +87,7 @@ var history = [], history_index = 0;
         response.find('.value').text(value);
       }
 
-      if (value.match(/\S*Error: /))
+      if (value && value.match(/\S*Error: /))
         response.addClass('error');
 
       scroll_to_end();
@@ -101,13 +101,18 @@ var history = [], history_index = 0;
 
     var set_command = function(cmd) {
       $('#shell textarea').val(cmd);
+      resize_textarea();
     };
 
-    $('#shell textarea').keyup(function() {
-      var lines = $(this).val().split("\n");
-      $(this).height(lines.length * INPUT_HEIGHT);
+    var resize_textarea = function() {
+      var textarea = $('#shell textarea');
+      var lines = textarea.val().split("\n");
+
+      textarea.height(lines.length * INPUT_HEIGHT);
       scroll_to_end();
-    });
+    };
+
+    $('#shell textarea').keyup(resize_textarea);
 
     $('#shell textarea').keydown(function(e) {
       var cmd, found = true;
@@ -138,19 +143,21 @@ var history = [], history_index = 0;
           break;
 
         case ENTER_KEY:
+          var val = $(this).val().trim();
+
           if (e.shiftKey) {
-            set_command($(this).val() + "\n");
+            set_command(val + "\n");
           }
           else {
-            var val = $(this).val().trim();
             if (val)
-              command(val);
+              run_command(val);
             else {
               add_output('', []);
               scroll_to_end();
             }
 
-            $(this).height(INPUT_HEIGHT).focus().val('');
+            set_command('');
+            $(this).height(INPUT_HEIGHT).focus();
           }
           break;
 
