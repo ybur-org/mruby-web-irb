@@ -215,6 +215,17 @@ var history = [], history_index = 0;
       $('textarea:last').focus();
     };
 
+    if (localStorage.saw_welcome != 'yes') {
+      editor.session.setValue('puts "hello world"');
+      localStorage.saw_welcome = 'yes';
+      $('#welcome').modal({onClose: function(dialog) {
+        dialog.data.fadeOut('fast', function () {
+          $.modal.close();
+          focus_editor();
+        });
+      }});
+    }
+
     focus_editor();
   });
 }());
