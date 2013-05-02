@@ -162,12 +162,13 @@ h2
     overflow-x: hidden !important
   .ace_marker-layer .ace_selection
     background: inherit
-  .ace_cursor.ace_hidden
-    opacity: 0
+  .ace_cursor
+    border-left: solid 2px white
+    opacity: 1
 
 .source.editor
-  .ace_hidden-cursors
-    opacity: 0
+  .ace_cursor, .ace_cursor_layer
+    display: none
 
 
 #fork-me

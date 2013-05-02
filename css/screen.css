@@ -321,16 +321,17 @@ h2 {
   background: inherit;
 }
 /* line 165, ../sass/screen.sass */
-#editor .ace_cursor.ace_hidden, .editor .ace_cursor.ace_hidden {
-  opacity: 0;
+#editor .ace_cursor, .editor .ace_cursor {
+  border-left: solid 2px white;
+  opacity: 1;
 }
 
-/* line 169, ../sass/screen.sass */
-.source.editor .ace_hidden-cursors {
-  opacity: 0;
+/* line 170, ../sass/screen.sass */
+.source.editor .ace_cursor, .source.editor .ace_cursor_layer {
+  display: none;
 }
 
-/* line 174, ../sass/screen.sass */
+/* line 175, ../sass/screen.sass */
 #fork-me img {
   position: absolute;
   top: 0;
@@ -339,17 +340,17 @@ h2 {
   z-index: 10;
 }
 
-/* line 181, ../sass/screen.sass */
+/* line 182, ../sass/screen.sass */
 #basic-modal-content {
   display: none;
 }
 
-/* line 184, ../sass/screen.sass */
+/* line 185, ../sass/screen.sass */
 #simplemodal-overlay {
   background-color: black;
 }
 
-/* line 187, ../sass/screen.sass */
+/* line 188, ../sass/screen.sass */
 #simplemodal-container {
   font-family: sans-serif;
   height: 512px;
@@ -360,7 +361,7 @@ h2 {
   padding: 12px;
 }
 
-/* line 196, ../sass/screen.sass */
+/* line 197, ../sass/screen.sass */
 #simplemodal-container code {
   background: #141414;
   border-left: 3px solid #65b43d;
@@ -370,7 +371,7 @@ h2 {
   padding: 4px 6px 6px;
 }
 
-/* line 204, ../sass/screen.sass */
+/* line 205, ../sass/screen.sass */
 #simplemodal-container a.modalCloseImg {
   background: url(../images/x.png) no-repeat;
   width: 25px;
@@ -383,7 +384,7 @@ h2 {
   cursor: pointer;
 }
 
-/* line 215, ../sass/screen.sass */
+/* line 216, ../sass/screen.sass */
 #simplemodal-container h3 {
   color: #84b8d9;
 }

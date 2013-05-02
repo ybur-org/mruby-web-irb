@@ -136,7 +136,7 @@ var history = [], history_index = 0;
           cmd = history[history_index];
 
           if (history_index >= history.length) {
-            history_index = history.length-1;
+            history_index = history.length;
             set_command('');
           }
           else
@@ -193,6 +193,7 @@ var history = [], history_index = 0;
     };
 
     var editor = configure_editor('editor');
+    window.ed = editor;
     editor.commands.addCommand({
       name: 'up',
       bindKey: 'Up',
@@ -214,18 +215,6 @@ var history = [], history_index = 0;
       $('textarea:last').focus();
     };
 
-    if (localStorage.saw_welcome != 'yes') {
-      editor.session.setValue('puts "hello world"');
-      localStorage.saw_welcome = 'yes';
-      $('#welcome').modal({onClose: function(dialog) {
-        dialog.data.fadeOut('fast', function () {
-          $.modal.close();
-          focus_editor();
-        });
-      }});
-    }
-
-    editor.gotoLine(1);
     focus_editor();
   });
 }());
