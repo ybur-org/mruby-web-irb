@@ -116,9 +116,9 @@ var history = [], history_index = 0;
     };
 
     var resize_textarea = function(editor, selector) {
-      var lines = editor.getValue().split("\n");
+      var lines = editor.session.getLength();
 
-      $(selector).height(lines.length * INPUT_HEIGHT);
+      $(selector).height(lines * INPUT_HEIGHT);
       scroll_to_end();
     };
 
@@ -203,6 +203,21 @@ var history = [], history_index = 0;
     };
 
     var editor = configure_editor('editor');
+    editor.commands.addCommand({
+      name: 'up',
+      bindKey: 'Up',
+      exec: function(editor) {
+        return false;
+      }
+    });
+
+    editor.commands.addCommand({
+      name: 'down',
+      bindKey: 'Down',
+      exec: function(editor) {
+        return false;
+      }
+    });
 
     $('textarea:last').focus();
   });
