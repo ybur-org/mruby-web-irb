@@ -28,20 +28,10 @@ var history = [], history_index = 0;
     });
 
     $('#shell').click(function() {
-      $('textarea:last').focus();
+      focus_editor();
     });
 
     $(window).trigger('resize');
-
-    if (!localStorage.saw_welcome) {
-      localStorage.saw_welcome = true;
-      $('#welcome').modal({onClose: function(dialog) {
-        dialog.data.fadeOut('fast', function () {
-          $.modal.close();
-          $('#shell textarea:last').focus();
-        });
-      }});
-    }
 
     $('#try-it-now').live('click', function(e) {
       e.preventDefault();
@@ -88,7 +78,7 @@ var history = [], history_index = 0;
       viewer.setReadOnly(true);
       resize_textarea(viewer, '#' + id);
       viewer.resize();
-      editor.focus();
+      focus_editor();
 
       if (value) {
         response.append('<span class="value-prompt">=&gt;</span><span class="value" />');
@@ -219,6 +209,23 @@ var history = [], history_index = 0;
       }
     });
 
-    $('textarea:last').focus();
+    var focus_editor = function() {
+      editor.focus();
+      $('textarea:last').focus();
+    };
+
+    if (localStorage.saw_welcome != 'yes') {
+      editor.session.setValue('puts "hello world"');
+      localStorage.saw_welcome = 'yes';
+      $('#welcome').modal({onClose: function(dialog) {
+        dialog.data.fadeOut('fast', function () {
+          $.modal.close();
+          focus_editor();
+        });
+      }});
+    }
+
+    editor.gotoLine(1);
+    focus_editor();
   });
 }());
