@@ -39,6 +39,7 @@ var history = [], history_index = 0;
     });
 
     webruby = new WEBRUBY({print_level: 2});
+    webruby.run();
     webruby.run_source($('script[type="text/ruby"]').text());
 
     var run_command = function(source) {
@@ -101,14 +102,16 @@ var history = [], history_index = 0;
     };
 
     var set_command = function(cmd) {
-      editor.getSession().setValue(cmd);
+      editor.session.setValue(cmd);
       resize_textarea(editor, '#editor');
+      editor.selection.moveCursorFileEnd();
     };
 
     var resize_textarea = function(editor, selector) {
       var lines = editor.session.getLength();
 
       $(selector).height(lines * INPUT_HEIGHT);
+      editor.resize();
       scroll_to_end();
     };
 
