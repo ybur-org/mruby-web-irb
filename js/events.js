@@ -219,7 +219,7 @@ var history = [], history_index = 0;
     };
 
     if (localStorage.saw_welcome != 'yes') {
-      editor.session.setValue('puts "hello world"');
+      set_command('puts "Hello World"');
       localStorage.saw_welcome = 'yes';
       $('#welcome').modal({onClose: function(dialog) {
         dialog.data.fadeOut('fast', function () {
