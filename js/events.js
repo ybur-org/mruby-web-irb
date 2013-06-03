@@ -2,6 +2,7 @@ var history = [], history_index = 0;
 
 (function () {
   var lines = [], printed = false, webruby, load_string_func;
+  var partial_src = "";
 
   if (localStorage) {
     history = JSON.parse(localStorage.history || '[]');
@@ -42,29 +43,35 @@ var history = [], history_index = 0;
     webruby.run();
     webruby.run_source($('script[type="text/ruby"]').text());
 
-    var run_command = function(source) {
+    var run_command = function(last_line) {
       lines = [];
       printed = false;
 
-      if (source != history[history.length-1])
-        history.push(source);
+      if (last_line != history[history.length-1])
+        history.push(last_line);
 
       history_index = history.length;
 
-      webruby.run_source(source);
-
-      if (!printed) {
-        window.Module['print']('nil');
+      var complete_src = partial_src ? (partial_src + "\n" + last_line) : (last_line);
+      var ret = webruby.multiline_run_source(complete_src);
+      if (ret === 2) {
+        partial_src = complete_src;
+      } else {
+        partial_src = "";
+        if (!printed) {
+          window.Module['print']('nil');
+        }
       }
 
-      add_output(source, lines);
+      add_output(last_line, lines);
     };
 
     var add_output = function(source, lines) {
       var element = $("#output");
       var value   = lines.slice(-1)[0];
 
-      var session = element.append('<div class="session"><div class="command"><span class="prompt">&gt;&gt;</span><div class="source editor"/></div><div class="response"></div></div>').find('.session:last');
+      var prompt = '<span class="prompt">' + $('#command .prompt').text() + '</span>';
+      var session = element.append('<div class="session"><div class="command">' + prompt + '<div class="source editor"/></div><div class="response"></div></div>').find('.session:last');
       var response = session.find('.response');
 
       $(lines.slice(0, -1)).each(function(_, line) {
@@ -72,6 +79,7 @@ var history = [], history_index = 0;
         response.find('p:last').text(line);
       });
 
+      $('#command .prompt').text(partial_src ? "**" : ">>");
       var size = $('.session').size();
       var id = 'editor' + size;
       session.find('.command .source').attr('id', id).text(source);
@@ -154,7 +162,7 @@ var history = [], history_index = 0;
             editor.resize();
           }
           else {
-            var val = editor.getValue().trim();
+            var val = editor.getValue().trimRight();
             if (val)
               run_command(val);
             else {
