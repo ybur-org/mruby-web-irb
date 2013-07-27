@@ -1,8 +1,8 @@
 This project runs a mruby interpreter in a browser. It depends on [webruby](https://github.com/xxuejie/webruby).
 
-A live demo of this project is at [http://qiezi.me/projects/mruby-web-irb/mruby.html](http://qiezi.me/projects/mruby-web-irb/mruby.html). Feel free to try it!
+## [Live Demo](http://joshnuss.github.io/mruby-web-irb)
 
-# How to build an interpreter
+# Building webruby.js
 
 1. Build [webruby](https://github.com/xxuejie/webruby) using any gem configuration. But remember to use loading mode 2.
 
@@ -12,7 +12,7 @@ A live demo of this project is at [http://qiezi.me/projects/mruby-web-irb/mruby.
 
 3. Now you are good to go!
 
-# How to regenerate the stylesheets
+# Generating the stylesheets
 
 First, you'll need compass:
 
