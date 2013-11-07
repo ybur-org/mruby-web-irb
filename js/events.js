@@ -53,7 +53,7 @@ var history = [], history_index = 0;
       history_index = history.length;
 
       var complete_src = partial_src ? (partial_src + "\n" + last_line) : (last_line);
-      var ret = webruby.multiline_run_source(complete_src);
+      var ret = webruby.run_source(complete_src);
       if (ret === 2) {
         partial_src = complete_src;
       } else {
