@@ -54,3 +54,7 @@ Webruby::App.setup do |conf|
   # path from mruby root, which is modules/webruby.
   # conf.gem "#{root}/examples/mrbgems/c_and_ruby_extension_example"
 end
+
+Rake::Task[:default].enhance do
+  cp "build/webruby.js", "js/webruby.js", verbose: true
+end
