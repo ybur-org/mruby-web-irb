@@ -45,6 +45,7 @@ Webruby::App.setup do |conf|
 
   # JavaScript calling interface
   conf.gem :git => 'git://github.com/xxuejie/mruby-js.git', :branch => 'master'
+  conf.gem :git => 'git://github.com/xxuejie/webruby-multiline-parse.git'
 
   # OpenGL ES 2.0 binding
   # conf.gem :git => 'git://github.com/xxuejie/mruby-gles.git', :branch => 'master'
