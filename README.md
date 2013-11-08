@@ -1,23 +1,34 @@
-This project runs a mruby interpreter in a browser. It depends on [webruby](https://github.com/xxuejie/webruby).
+# mruby interpreter that runs in your browser
 
-## [Live Demo](http://joshnuss.github.io/mruby-web-irb)
+Made possible thanks to [Webruby](https://github.com/xxuejie/webruby), a project that brings together llvm, emscripten and mruby.
 
-# Building webruby.js
+# [Live Demo](http://joshnuss.github.io/mruby-web-irb)
 
-1. Build [webruby](https://github.com/xxuejie/webruby) using any gem configuration. But remember to use loading mode 2.
+# Prerequisites
 
-	**NOTE**: If you do not know what is loading mode, feel free to ignore this since loading mode 2 is the default. However, a detailed description on loading mode is at [here](https://github.com/xxuejie/webruby/blob/master/rakelib/functions.rb#L3).
+- llvm
+- emscripten
 
-2. Copy the generated `webruby.js` file to current folder(and override existing file).
+See [webruby](https://github.com/xxuejie/webruby) for installation instructions
 
-3. Now you are good to go!
+# Installation
 
-# Generating the stylesheets
+Run bundler to get webruby, sass etc..:
 
-First, you'll need compass:
+  > bundle
 
-  > bundle install
+# Compiling
 
-Then you can monitor the stylesheets for changes with:
+To compile `webruby.js`:
+
+  > rake
+
+# Stylesheets
+
+Generate using compass:
+
+  > compass compile
+
+or
 
   > compass watch
