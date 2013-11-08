@@ -119,6 +119,14 @@ var history = [], history_index = 0;
       resize_textarea(editor, '#editor');
     };
 
+    var quick_command = function(cmd) {
+      set_command(cmd);
+      setTimeout(function() {
+        run_command(cmd);
+        set_command('');
+      }, 200)
+    }
+
     var resize_textarea = function(editor, selector) {
       var lines = editor.session.getLength();
 
@@ -230,7 +238,22 @@ var history = [], history_index = 0;
       $('textarea:last').focus();
     };
 
-    if (localStorage.saw_welcome != 'yes') {
+    focus_editor();
+
+    if (startupCommand = getUrlParameter('cmd'))
+      quick_command(startupCommand);
+
+    if (gistID = getUrlParameter('gist')) {
+      $.get("https://api.github.com/gists/" + gistID, function (data) {
+        $.each(data.files, function(name, file) {
+          if (file.language == "Ruby"){
+            quick_command(file.content);
+          }
+        });
+      });
+    }
+
+    if (!startupCommand && !gistID && localStorage.saw_welcome != 'yes') {
       set_command('puts "Hello World"');
       localStorage.saw_welcome = 'yes';
       $('#welcome').modal({onClose: function(dialog) {
@@ -241,19 +264,5 @@ var history = [], history_index = 0;
       }});
     }
 
-    focus_editor();
-
-    if (storedCommand = getUrlParameter('cmd'))
-      run_command(storedCommand);
-
-    if (gistID = getUrlParameter('gist')) {
-      $.get("https://api.github.com/gists/" + gistID, function (data) {
-        $.each(data.files, function(name, file){
-          if (file.language == "Ruby"){
-            run_command(file.content);
-          }
-        });
-      });
-    }
   });
 }());
