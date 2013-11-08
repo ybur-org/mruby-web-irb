@@ -39,6 +39,10 @@ var history = [], history_index = 0;
       $.modal.close();
     });
 
+    var getUrlParameter = function(name) {
+      return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+    };
+
     webruby = new WEBRUBY({print_level: 2});
     webruby.run();
     webruby.run_source($('script[type="text/ruby"]').text());
@@ -238,5 +242,8 @@ var history = [], history_index = 0;
     }
 
     focus_editor();
+
+    if (stored = getUrlParameter('cmd'))
+      run_command(stored);
   });
 }());
