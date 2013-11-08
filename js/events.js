@@ -243,7 +243,17 @@ var history = [], history_index = 0;
 
     focus_editor();
 
-    if (stored = getUrlParameter('cmd'))
-      run_command(stored);
+    if (storedCommand = getUrlParameter('cmd'))
+      run_command(storedCommand);
+
+    if (gistID = getUrlParameter('gist')) {
+      $.get("https://api.github.com/gists/" + gistID, function (data) {
+        $.each(data.files, function(name, file){
+          if (file.language == "Ruby"){
+            run_command(file.content);
+          }
+        });
+      });
+    }
   });
 }());
