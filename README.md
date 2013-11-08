@@ -1,29 +1,29 @@
-# mruby interpreter that runs in your browser
+# Browser based mruby interpreter
 
 Made possible thanks to [Webruby](https://github.com/xxuejie/webruby), a project that brings together llvm, emscripten and mruby.
 
 # [Live Demo](http://joshnuss.github.io/mruby-web-irb)
 
-# Prerequisites
+## Prerequisites
 
 - llvm
 - emscripten
 
 See [webruby](https://github.com/xxuejie/webruby) for installation instructions
 
-# Installation
+## Installation
 
 Run bundler to get webruby, sass etc..:
 
   > bundle
 
-# Compiling
+## Compiling
 
 To compile `webruby.js`:
 
   > rake
 
-# Stylesheets
+## Stylesheets
 
 Generate using compass:
 
