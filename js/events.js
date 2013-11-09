@@ -253,9 +253,7 @@ var history = [], history_index = 0;
       });
     }
 
-    if (!startupCommand && !gistID && localStorage.saw_welcome != 'yes') {
-      set_command('puts "Hello World"');
-      localStorage.saw_welcome = 'yes';
+    var showHelp = function() {
       $('#welcome').modal({onClose: function(dialog) {
         dialog.data.fadeOut('fast', function () {
           $.modal.close();
@@ -264,12 +262,20 @@ var history = [], history_index = 0;
       }});
     }
 
+    if (!startupCommand && !gistID && localStorage.saw_welcome != 'yes') {
+      set_command('puts "Hello World"');
+      localStorage.saw_welcome = 'yes';
+      showHelp();
+    }
+
     var saveGist = function(description, content, callback) {
       var data = {"description": description, "public": true, "files": {"sample.rb": {"content": content}}};
       $.post('https://api.github.com/gists', JSON.stringify(data), function(response) {
         callback(response.id);
       });
     };
+
+    $('#sidebar .help').click(showHelp)
     //saveGist("example gist", "puts 1+1", function (gistID) { alert(gistID); });
   });
 }());
