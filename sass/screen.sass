@@ -1,5 +1,6 @@
 @import "compass/reset"
 @import "bourbon/bourbon"
+@import "font-awesome/font-awesome"
 
 $background-color: #272822
 $font-color: #F8F8F2
@@ -213,3 +214,34 @@ h2
 
 #simplemodal-container h3
   color: #84b8d9
+
+#sidebar
+  position: absolute
+  background: rgba(255,255,255,0.2)
+  z-index: 20
+  top: 100px
+  right: 40px
+  opacity: 0.3
+
+  &:hover
+    opacity: 1
+    background: #444
+
+  .icons
+    padding: 10px 0
+
+    li
+      display: block
+      width: 80px
+      font-size: 30px
+      text-align: center
+    a
+      display: inline-block
+      text-shadow: -1px -1px rgba(0,0,0,0.4)
+      width: 60px
+      padding: 10px
+      cursor: pointer
+      color: gray
+
+      &:hover
+        color: lightgray
