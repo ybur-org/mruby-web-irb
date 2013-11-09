@@ -264,5 +264,12 @@ var history = [], history_index = 0;
       }});
     }
 
+    var saveGist = function(description, content, callback) {
+      var data = {"description": description, "public": true, "files": {"sample.rb": {"content": content}}};
+      $.post('https://api.github.com/gists', JSON.stringify(data), function(response) {
+        callback(response.id);
+      });
+    };
+    //saveGist("example gist", "puts 1+1", function (gistID) { alert(gistID); });
   });
 }());
