@@ -1,12 +1,11 @@
-var history = [], history_index = 0;
-
 (function () {
+  var historyList = [], historyIndex = 0;
   var lines = [], printed = false, webruby, load_string_func;
   var partial_src = "";
 
   if (localStorage) {
-    history = JSON.parse(localStorage.history || '[]');
-    history_index = history.length;
+    historyList = JSON.parse(localStorage.historyList || '[]');
+    historyIndex = historyList.length;
   }
 
   var INPUT_HEIGHT = 21;
@@ -66,10 +65,10 @@ var history = [], history_index = 0;
       lines = [];
       printed = false;
 
-      if (last_line != history[history.length-1])
-        history.push(last_line);
+      if (last_line != historyList[historyList.length-1])
+        historyList.push(last_line);
 
-      history_index = history.length;
+      historyIndex = historyList.length;
 
       var complete_src = partial_src ? (partial_src + "\n" + last_line) : (last_line);
       var ret = webruby.multiline_run_source(complete_src);
@@ -121,7 +120,7 @@ var history = [], history_index = 0;
 
       scroll_to_end();
 
-      history_index = history.length;
+      historyIndex = historyList.length;
     };
 
     var scroll_to_end = function() {
@@ -159,22 +158,22 @@ var history = [], history_index = 0;
 
       switch (e.which) {
         case UP_KEY:
-          history_index--;
-          cmd = history[history_index];
+          historyIndex--;
+          cmd = historyList[historyIndex];
 
-          if (history_index < 0)
-            history_index = 0;
+          if (historyIndex < 0)
+            historyIndex = 0;
           else
             set_command(cmd);
 
           break;
 
         case DOWN_KEY:
-          history_index++;
-          cmd = history[history_index];
+          historyIndex++;
+          cmd = historyList[historyIndex];
 
-          if (history_index >= history.length) {
-            history_index = history.length;
+          if (historyIndex >= historyList.length) {
+            historyIndex = historyList.length;
             set_command('');
           }
           else
@@ -214,7 +213,7 @@ var history = [], history_index = 0;
       webruby.close();
 
       if (localStorage) {
-        localStorage.history = JSON.stringify(history);
+        localStorage.historyList = JSON.stringify(historyList);
       }
     };
 
