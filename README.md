@@ -3,6 +3,7 @@
 Made possible thanks to [Webruby](https://github.com/xxuejie/webruby), a project that brings together llvm, emscripten and mruby.
 
 # [Live Demo](http://joshnuss.github.io/mruby-web-irb)
+# [Video Walkthrough](https://www.youtube.com/watch?v=WQyqQnWi2Qs)
 
 ## Prerequisites
 
